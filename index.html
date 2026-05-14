@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Incredible Explorer — Discover India</title>
+<meta name="description" content="Explore the wonders of India with Incredible Explorer — a modern travel guide for Telangana and Andhra Pradesh." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- Loader -->
+<div id="loader" class="loader">
+  <div class="spinner"></div>
+  <p>Loading your journey...</p>
+</div>
+
+<!-- Background -->
+<div class="bg-overlay"></div>
+
+<!-- Navbar (hidden on auth pages) -->
+<nav id="navbar" class="navbar hidden">
+  <div class="logo"><i class="fa-solid fa-compass"></i> Incredible Explorer</div>
+  <ul class="nav-links">
+    <li><a href="#" data-page="home"><i class="fa-solid fa-house"></i> Home</a></li>
+    <li><a href="#" data-page="explore"><i class="fa-solid fa-map-location-dot"></i> Explore</a></li>
+    <li><a href="#" data-page="about"><i class="fa-solid fa-circle-info"></i> About</a></li>
+    <li><a href="#" data-page="rating"><i class="fa-solid fa-star"></i> Rate Us</a></li>
+    <li><a href="#" data-page="thanks"><i class="fa-solid fa-heart"></i> Thanks</a></li>
+    <li><a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></div>
+</nav>
+
+<main id="app">
+
+  <!-- LOGIN PAGE -->
+  <section class="page active" id="page-login">
+    <div class="glass-card auth-card">
+      <h1 class="auth-title"><i class="fa-solid fa-compass"></i> Incredible Explorer</h1>
+      <p class="auth-sub">Welcome back, traveler</p>
+      <form id="loginForm">
+        <div class="input-group">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="email" id="loginEmail" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="loginPassword" placeholder="Password" required />
+        </div>
+        <button type="submit" class="btn-gradient">Login <i class="fa-solid fa-arrow-right"></i></button>
+        <p class="switch-link">New here? <a href="#" data-page="signup">Create an account</a></p>
+        <p id="loginMsg" class="form-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- SIGNUP PAGE -->
+  <section class="page" id="page-signup">
+    <div class="glass-card auth-card">
+      <h1 class="auth-title"><i class="fa-solid fa-user-plus"></i> Sign Up</h1>
+      <p class="auth-sub">Begin your incredible journey</p>
+      <form id="signupForm">
+        <div class="input-group">
+          <i class="fa-solid fa-envelope"></i>
+          <input type="email" id="signupEmail" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <i class="fa-solid fa-lock"></i>
+          <input type="password" id="signupPassword" placeholder="Password (min 6 chars)" minlength="6" required />
+        </div>
+        <button type="submit" class="btn-gradient">Sign Up <i class="fa-solid fa-arrow-right"></i></button>
+        <p class="switch-link">Already a member? <a href="#" data-page="login">Login</a></p>
+        <p id="signupMsg" class="form-msg"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- HOME PAGE -->
+  <section class="page" id="page-home">
+    <div class="hero">
+      <h1 class="hero-title">INCREDIBLE<br/><span>EXPLORER</span></h1>
+      <p class="hero-tagline">Where every journey becomes a story.</p>
+      <button class="btn-gradient btn-large" data-page="explore">
+        Start Your Journey <i class="fa-solid fa-plane-departure"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- EXPLORE PAGE -->
+  <section class="page" id="page-explore">
+    <div class="explore-wrap">
+      <h2 class="page-title">Explore Destinations</h2>
+      <p class="page-sub">Choose a state and district to reveal hidden gems</p>
+
+      <div class="selectors">
+        <div class="select-group">
+          <label for="stateSelect"><i class="fa-solid fa-location-dot"></i> State</label>
+          <select id="stateSelect">
+            <option value="">-- Select State --</option>
+            <option value="telangana">Telangana</option>
+            <option value="andhra">Andhra Pradesh</option>
+          </select>
+        </div>
+        <div class="select-group">
+          <label for="districtSelect"><i class="fa-solid fa-map-pin"></i> District</label>
+          <select id="districtSelect" disabled>
+            <option value="">-- Select District --</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="placesGrid" class="places-grid"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT PAGE -->
+  <section class="page" id="page-about">
+    <div class="glass-card about-card">
+      <h2 class="page-title">About the Project</h2>
+      <p class="about-desc">
+        <strong>Incredible Explorer</strong> is a modern travel guide that highlights the
+        breathtaking destinations of Telangana and Andhra Pradesh. From serene beaches to
+        sacred temples and bustling cityscapes, we bring India's wonders to your fingertips.
+      </p>
+      <h3 class="team-heading"><i class="fa-solid fa-users"></i> Meet the Team</h3>
+      <div class="team-grid">
+        <div class="team-card">ROSHANARA</div>
+        <div class="team-card">GAYATHRI</div>
+        <div class="team-card">KARISHMA</div>
+        <div class="team-card">MANOGNA</div>
+        <div class="team-card">CHARITHA</div>
+        <div class="team-card">VASUNDHARA</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RATING PAGE -->
+  <section class="page" id="page-rating">
+    <div class="glass-card rating-card">
+      <h2 class="page-title">Rate Your Experience</h2>
+      <p class="page-sub">Your feedback helps us craft better journeys</p>
+      <div class="stars" id="stars">
+        <i class="fa-regular fa-star" data-val="1"></i>
+        <i class="fa-regular fa-star" data-val="2"></i>
+        <i class="fa-regular fa-star" data-val="3"></i>
+        <i class="fa-regular fa-star" data-val="4"></i>
+        <i class="fa-regular fa-star" data-val="5"></i>
+      </div>
+      <p id="ratingMsg" class="rating-msg"></p>
+    </div>
+  </section>
+
+  <!-- THANKS PAGE -->
+  <section class="page" id="page-thanks">
+    <div class="glass-card thanks-card">
+      <i class="fa-solid fa-heart pulse-heart"></i>
+      <h2 class="page-title">Thank You!</h2>
+      <p class="thanks-text">
+        We appreciate you exploring India with us. May your travels be filled with
+        wonder, joy, and unforgettable memories.
+      </p>
+      <div class="contact">
+        <p><i class="fa-solid fa-envelope"></i> <a href="mailto:contact@incredibleexplorer.com">contact@incredibleexplorer.com</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer id="footer" class="footer hidden">
+  <p>© 2026 Incredible Explorer · Crafted with <i class="fa-solid fa-heart"></i> by the Explorer Team</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
